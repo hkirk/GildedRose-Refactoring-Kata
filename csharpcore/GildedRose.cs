@@ -30,22 +30,14 @@ namespace csharpcore
                     Items[i].Quality -= 1;
                     if (Items[i].SellIn < 0)
                     {
-                        Items[i].Quality = Items[i].Quality - 1;
+                        Items[i].Quality -= 1;
                     }
                 }
                 else
                 {
                     Items[i].Quality += 1;
                     (Items[i] as BackstagePassItem)?.IncreaseQuality();
-                }
-
-
-                if (Items[i].SellIn < 0)
-                {
-                    if (Items[i].Name == AgedBrie)
-                    {
-                        Items[i].Quality = Items[i].Quality + 1;
-                    }
+                    (Items[i] as AgedBrieItem)?.IncreaseQuality();
                 }
 
                 MaxQuality(Items[i]);
