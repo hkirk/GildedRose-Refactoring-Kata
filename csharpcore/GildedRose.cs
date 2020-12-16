@@ -7,26 +7,26 @@ namespace csharpcore
         public static string SulfurasHandOfRagnaros = "Sulfuras, Hand of Ragnaros";
         public static string BackstagePassesToATafkal80etcConcert = "Backstage passes to a TAFKAL80ETC concert";
         public static string AgedBrie = "Aged Brie";
-        
-        IList<Item> Items;
-        public GildedRose(IList<Item> Items)
+
+        private readonly IList<Item> items;
+        public GildedRose(IList<Item> items)
         {
-            this.Items = Items;
+            this.items = items;
         }
 
         public void UpdateQuality()
         {
-            for (var i = 0; i < Items.Count; i++)
+            foreach (var item in items)
             {
-                if (Items[i] is SulfurasHandOfRagnarosItem)
+                if (item is SulfurasHandOfRagnarosItem)
                 {
                     break;
                 }
 
-                Items[i].SellIn -= 1;
-                UpdatedQuality(Items[i]);
-                MaxQuality(Items[i]);
-                MinQuality(Items[i]);
+                item.SellIn -= 1;
+                UpdatedQuality(item);
+                MaxQuality(item);
+                MinQuality(item);
             }
         }
 
