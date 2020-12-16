@@ -18,7 +18,7 @@ namespace csharpcore
         {
             for (var i = 0; i < Items.Count; i++)
             {
-                if (Items[i].Name == SulfurasHandOfRagnaros)
+                if (Items[i] is SulfurasHandOfRagnarosItem)
                 {
                     break;
                 }

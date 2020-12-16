@@ -39,7 +39,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item>
             {
-                new Item
+                new SulfurasHandOfRagnarosItem
                     {Name = GildedRose.SulfurasHandOfRagnaros, SellIn = 0, Quality = 2}
             };
             GildedRose app = new GildedRose(Items);
@@ -179,7 +179,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item>
             {
-                new Item
+                new SulfurasHandOfRagnarosItem
                     {Name = GildedRose.SulfurasHandOfRagnaros, SellIn = 10, Quality = 20}
             };
             GildedRose app = new GildedRose(Items);
