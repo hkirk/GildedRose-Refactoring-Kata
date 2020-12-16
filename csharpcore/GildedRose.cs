@@ -25,17 +25,17 @@ namespace csharpcore
 
                 item.SellIn -= 1;
                 UpdatedQuality(item);
-                Postconditions(item);
+                PostConditions(item);
             }
         }
 
-        private void Postconditions(Item item)
+        private static void PostConditions(Item item)
         {
             MaxQuality(item);
             MinQuality(item);
         }
 
-        private void UpdatedQuality(Item item)
+        private static void UpdatedQuality(Item item)
         {
             if (item is AgedItem)
             {
@@ -62,7 +62,7 @@ namespace csharpcore
             }
         }
 
-        private void MinQuality(Item item)
+        private static void MinQuality(Item item)
         {
             if (item.Quality < 0)
             {
@@ -70,7 +70,7 @@ namespace csharpcore
             }
         }
 
-        private void MaxQuality(Item item)
+        private static void MaxQuality(Item item)
         {
             if (item.Quality > 50)
             {
