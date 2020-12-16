@@ -24,24 +24,27 @@ namespace csharpcore
                 }
 
                 Items[i].SellIn -= 1;
-                
-                if (Items[i].Name != AgedBrie && Items[i].Name != BackstagePassesToATafkal80etcConcert)
-                {
-                    Items[i].Quality -= 1;
-                    if (Items[i].SellIn < 0)
-                    {
-                        Items[i].Quality -= 1;
-                    }
-                }
-                else
-                {
-                    Items[i].Quality += 1;
-                    (Items[i] as BackstagePassItem)?.IncreaseQuality();
-                    (Items[i] as AgedBrieItem)?.IncreaseQuality();
-                }
-
+                UpdatedQuality(Items[i]);
                 MaxQuality(Items[i]);
                 MinQuality(Items[i]);
+            }
+        }
+
+        private void UpdatedQuality(Item item)
+        {
+            if (item is AgedItem)
+            {
+                item.Quality += 1;
+                (item as BackstagePassItem)?.IncreaseQuality();
+                (item as AgedBrieItem)?.IncreaseQuality();
+            }
+            else
+            {
+                item.Quality -= 1;
+                if (item.SellIn < 0)
+                {
+                    item.Quality -= 1;
+                }
             }
         }
 

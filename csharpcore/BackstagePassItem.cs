@@ -1,6 +1,6 @@
 namespace csharpcore
 {
-    public class BackstagePassItem : Item
+    public class BackstagePassItem : AgedItem
     {
         public void IncreaseQuality()
         {

@@ -1,6 +1,6 @@
 namespace csharpcore
 {
-    public class AgedBrieItem : Item
+    public class AgedBrieItem : AgedItem
     {
         public void IncreaseQuality()
         {
