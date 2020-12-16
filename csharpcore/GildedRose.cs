@@ -28,6 +28,10 @@ namespace csharpcore
                 if (Items[i].Name != AgedBrie && Items[i].Name != BackstagePassesToATafkal80etcConcert)
                 {
                     Items[i].Quality -= 1;
+                    if (Items[i].SellIn < 0)
+                    {
+                        Items[i].Quality = Items[i].Quality - 1;
+                    }
                 }
                 else
                 {
@@ -38,18 +42,7 @@ namespace csharpcore
 
                 if (Items[i].SellIn < 0)
                 {
-                    if (Items[i].Name != AgedBrie)
-                    {
-                        if (Items[i].Name != BackstagePassesToATafkal80etcConcert)
-                        {
-                            Items[i].Quality = Items[i].Quality - 1;
-                        }
-                        else
-                        {
-                            Items[i].Quality = 0;
-                        }
-                    }
-                    else
+                    if (Items[i].Name == AgedBrie)
                     {
                         Items[i].Quality = Items[i].Quality + 1;
                     }

@@ -151,7 +151,7 @@ namespace csharpcore
 
             IList<Item> Items = new List<Item>
             {
-                new Item
+                new BackstagePassItem
                     {Name = GildedRose.BackstagePassesToATafkal80etcConcert, SellIn = 0, Quality = 20}
             };
             GildedRose app = new GildedRose(Items);

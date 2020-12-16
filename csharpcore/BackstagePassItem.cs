@@ -13,6 +13,11 @@ namespace csharpcore
             {
                 Quality += 1;
             }
+
+            if (SellIn < 0)
+            {
+                Quality = 0;
+            }
         }
     }
 }
