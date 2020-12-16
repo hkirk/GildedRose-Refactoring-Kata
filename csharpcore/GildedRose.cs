@@ -32,27 +32,18 @@ namespace csharpcore
                 }
                 else
                 {
-                    if (Items[i].Quality < 50)
+                    Items[i].Quality = Items[i].Quality + 1;
+
+                    if (Items[i].Name == BackstagePassesToATafkal80etcConcert)
                     {
-                        Items[i].Quality = Items[i].Quality + 1;
-
-                        if (Items[i].Name == BackstagePassesToATafkal80etcConcert)
+                        if (Items[i].SellIn < 11)
                         {
-                            if (Items[i].SellIn < 11)
-                            {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality = Items[i].Quality + 1;
-                                }
-                            }
+                            Items[i].Quality = Items[i].Quality + 1;
+                        }
 
-                            if (Items[i].SellIn < 6)
-                            {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality = Items[i].Quality + 1;
-                                }
-                            }
+                        if (Items[i].SellIn < 6)
+                        {
+                            Items[i].Quality = Items[i].Quality + 1;
                         }
                     }
                 }
@@ -73,16 +64,18 @@ namespace csharpcore
                         }
                         else
                         {
-                            Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                            Items[i].Quality = 0;
                         }
                     }
                     else
                     {
-                        if (Items[i].Quality < 50)
-                        {
-                            Items[i].Quality = Items[i].Quality + 1;
-                        }
+                        Items[i].Quality = Items[i].Quality + 1;
                     }
+                }
+
+                if (Items[i].Quality > 50)
+                {
+                    Items[i].Quality = 50;
                 }
             }
         }

@@ -75,6 +75,20 @@ namespace csharpcore
 
             Assert.Equal(4, Items[0].Quality);
         }
+        
+        [Fact]
+        public void maxValueOfOldBrieIs50()
+        {
+            IList<Item> Items = new List<Item>
+            {
+                new Item
+                    {Name = GildedRose.AgedBrie, SellIn = 0, Quality = 49}
+            };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            Assert.Equal(50, Items[0].Quality);
+        }
 
         [Fact]
         public void increaseValueOfBackstagePasses()
@@ -116,6 +130,20 @@ namespace csharpcore
             app.UpdateQuality();
 
             Assert.Equal(5, Items[0].Quality);
+        }
+        
+        [Fact]
+        public void maxValueOfBackstagePassesIs50()
+        {
+            IList<Item> Items = new List<Item>
+            {
+                new Item
+                    {Name = GildedRose.BackstagePassesToATafkal80etcConcert, SellIn = 5, Quality = 49}
+            };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            Assert.Equal(50, Items[0].Quality);
         }
 
         [Fact]
