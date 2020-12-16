@@ -4,12 +4,12 @@ namespace csharpcore
     {
         public void IncreaseQuality()
         {
-            if (SellIn < 11)
+            if (SellIn < 10)
             {
                 Quality += 1;
             }
 
-            if (SellIn < 6)
+            if (SellIn < 5)
             {
                 Quality += 1;
             }

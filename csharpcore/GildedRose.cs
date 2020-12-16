@@ -23,6 +23,8 @@ namespace csharpcore
                     break;
                 }
 
+                Items[i].SellIn -= 1;
+                
                 if (Items[i].Name != AgedBrie && Items[i].Name != BackstagePassesToATafkal80etcConcert)
                 {
                     Items[i].Quality -= 1;
@@ -33,8 +35,6 @@ namespace csharpcore
                     (Items[i] as BackstagePassItem)?.IncreaseQuality();
                 }
 
-
-                Items[i].SellIn -= 1;
 
                 if (Items[i].SellIn < 0)
                 {
