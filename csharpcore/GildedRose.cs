@@ -18,15 +18,16 @@ namespace csharpcore
         {
             for (var i = 0; i < Items.Count; i++)
             {
-                
+                if (Items[i].Name == SulfurasHandOfRagnaros)
+                {
+                    break;
+                }
+
                 if (Items[i].Name != AgedBrie && Items[i].Name != BackstagePassesToATafkal80etcConcert)
                 {
                     if (Items[i].Quality > 0)
                     {
-                        if (Items[i].Name != SulfurasHandOfRagnaros)
-                        {
-                            Items[i].Quality = Items[i].Quality - 1;
-                        }
+                        Items[i].Quality = Items[i].Quality - 1;
                     }
                 }
                 else
@@ -56,10 +57,8 @@ namespace csharpcore
                     }
                 }
 
-                if (Items[i].Name != SulfurasHandOfRagnaros)
-                {
-                    Items[i].SellIn = Items[i].SellIn - 1;
-                }
+
+                Items[i].SellIn = Items[i].SellIn - 1;
 
                 if (Items[i].SellIn < 0)
                 {
@@ -69,10 +68,7 @@ namespace csharpcore
                         {
                             if (Items[i].Quality > 0)
                             {
-                                if (Items[i].Name != SulfurasHandOfRagnaros)
-                                {
-                                    Items[i].Quality = Items[i].Quality - 1;
-                                }
+                                Items[i].Quality = Items[i].Quality - 1;
                             }
                         }
                         else
