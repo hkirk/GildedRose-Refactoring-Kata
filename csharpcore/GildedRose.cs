@@ -25,31 +25,16 @@ namespace csharpcore
 
                 if (Items[i].Name != AgedBrie && Items[i].Name != BackstagePassesToATafkal80etcConcert)
                 {
-                    if (Items[i].Quality > 0)
-                    {
-                        Items[i].Quality = Items[i].Quality - 1;
-                    }
+                    Items[i].Quality -= 1;
                 }
                 else
                 {
-                    Items[i].Quality = Items[i].Quality + 1;
-
-                    if (Items[i].Name == BackstagePassesToATafkal80etcConcert)
-                    {
-                        if (Items[i].SellIn < 11)
-                        {
-                            Items[i].Quality = Items[i].Quality + 1;
-                        }
-
-                        if (Items[i].SellIn < 6)
-                        {
-                            Items[i].Quality = Items[i].Quality + 1;
-                        }
-                    }
+                    Items[i].Quality += 1;
+                    (Items[i] as BackstagePassItem)?.IncreaseQuality();
                 }
 
 
-                Items[i].SellIn = Items[i].SellIn - 1;
+                Items[i].SellIn -= 1;
 
                 if (Items[i].SellIn < 0)
                 {
@@ -57,10 +42,7 @@ namespace csharpcore
                     {
                         if (Items[i].Name != BackstagePassesToATafkal80etcConcert)
                         {
-                            if (Items[i].Quality > 0)
-                            {
-                                Items[i].Quality = Items[i].Quality - 1;
-                            }
+                            Items[i].Quality = Items[i].Quality - 1;
                         }
                         else
                         {
@@ -73,10 +55,24 @@ namespace csharpcore
                     }
                 }
 
-                if (Items[i].Quality > 50)
-                {
-                    Items[i].Quality = 50;
-                }
+                MaxQuality(Items[i]);
+                MinQuality(Items[i]);
+            }
+        }
+
+        private void MinQuality(Item item)
+        {
+            if (item.Quality < 0)
+            {
+                item.Quality = 0;
+            }
+        }
+
+        private void MaxQuality(Item item)
+        {
+            if (item.Quality > 50)
+            {
+                item.Quality = 50;
             }
         }
     }
