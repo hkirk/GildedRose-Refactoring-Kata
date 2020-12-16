@@ -29,27 +29,31 @@ namespace csharpcore
             }
         }
 
-        private static void PostConditions(Item item)
-        {
-            MaxQuality(item);
-            MinQuality(item);
-        }
-
         private static void UpdatedQuality(Item item)
         {
             if (item is AgedItem)
             {
-                item.Quality += 1;
-                (item as BackstagePassItem)?.IncreaseQuality();
-                (item as AgedBrieItem)?.IncreaseQuality();
+                IncreaseAgedItemQuality(item);
             }
             else
             {
                 DecreaseItemQuality(item);
-                if (item is ConjuredItem)
-                {
-                    DecreaseItemQuality(item);
-                }
+                DecreaseConjuredItemQuality(item);
+            }
+        }
+
+        private static void IncreaseAgedItemQuality(Item item)
+        {
+            item.Quality += 1;
+            (item as BackstagePassItem)?.IncreaseQuality();
+            (item as AgedBrieItem)?.IncreaseQuality();
+        }
+
+        private static void DecreaseConjuredItemQuality(Item item)
+        {
+            if (item is ConjuredItem)
+            {
+                DecreaseItemQuality(item);
             }
         }
 
@@ -60,6 +64,12 @@ namespace csharpcore
             {
                 item.Quality -= 1;
             }
+        }
+
+        private static void PostConditions(Item item)
+        {
+            MaxQuality(item);
+            MinQuality(item);
         }
 
         private static void MinQuality(Item item)
