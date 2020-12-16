@@ -25,9 +25,14 @@ namespace csharpcore
 
                 item.SellIn -= 1;
                 UpdatedQuality(item);
-                MaxQuality(item);
-                MinQuality(item);
+                Postconditions(item);
             }
+        }
+
+        private void Postconditions(Item item)
+        {
+            MaxQuality(item);
+            MinQuality(item);
         }
 
         private void UpdatedQuality(Item item)
@@ -40,11 +45,20 @@ namespace csharpcore
             }
             else
             {
-                item.Quality -= 1;
-                if (item.SellIn < 0)
+                DecreaseItemQuality(item);
+                if (item is ConjuredItem)
                 {
-                    item.Quality -= 1;
+                    DecreaseItemQuality(item);
                 }
+            }
+        }
+
+        private static void DecreaseItemQuality(Item item)
+        {
+            item.Quality -= 1;
+            if (item.SellIn < 0)
+            {
+                item.Quality -= 1;
             }
         }
 

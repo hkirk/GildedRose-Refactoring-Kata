@@ -23,11 +23,31 @@ namespace csharpcore
 
             Assert.Equal(1, Items[0].Quality);
         }
+        
+        [Fact]
+        public void decreaseQualityOfConjuredFoo()
+        {
+            IList<Item> Items = new List<Item> {new ConjuredItem {Name = "foo", SellIn = 1, Quality = 2}};
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            Assert.Equal(0, Items[0].Quality);
+        }
 
         [Fact]
         public void decreaseQualityOfFooWithZeroSellIn()
         {
             IList<Item> Items = new List<Item> {new Item {Name = "foo", SellIn = 0, Quality = 2}};
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            Assert.Equal(0, Items[0].Quality);
+        }
+        
+        [Fact]
+        public void decreaseQualityOfConjuredFooWithZeroSellIn()
+        {
+            IList<Item> Items = new List<Item> {new ConjuredItem {Name = "foo", SellIn = 0, Quality = 4}};
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
